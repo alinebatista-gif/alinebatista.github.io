@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services & Packages — Aline Batista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:  #F5F0E8;
+  --paper2: #EDE6D6;
+  --paper3: #E3D9C5;
+  --ink:    #100E0C;
+  --red:    #BF1A34;
+  --red-l:  #E03050;
+  --mauve:  #7B5C8C;
+  --mauve-l:#A07DB8;
+  --muted:  #7A6F65;
+  --border: rgba(16,14,12,0.12);
+  --border2:rgba(16,14,12,0.25);
+  --border3:rgba(16,14,12,0.55);
+}
+
+html{scroll-behavior:smooth;}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:'DM Sans',sans-serif;font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* GRAIN */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:500;opacity:0.5;}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.9rem 2.5rem;
+  background:rgba(245,240,232,0.95);
+  border-bottom:1.5px solid var(--border2);
+  backdrop-filter:blur(12px);
+}
+.nav-brand{
+  font-family:'Bebas Neue',sans-serif;font-size:1rem;
+  letter-spacing:0.15em;color:var(--ink);text-decoration:none;
+}
+.nav-brand .r{color:var(--red);}
+.nav-brand .m{color:var(--mauve);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-back{
+  font-family:'DM Mono',monospace;font-size:0.6rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  display:flex;align-items:center;gap:0.4rem;
+  transition:color 0.15s;
+}
+.nav-back:hover{color:var(--red);}
+.nav-cta{
+  padding:0.38rem 1rem;border:1.5px solid var(--red);
+  font-family:'DM Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:lowercase;
+  color:var(--red);text-decoration:none;
+  transition:all 0.18s;
+}
+.nav-cta:hover{background:var(--red);color:#fff;}
+
+/* HERO */
+.hero{
+  padding:5rem 2.5rem 4rem;
+  border-bottom:1.5px solid var(--border2);
+  position:relative;overflow:hidden;
+}
+.hero-bg-text{
+  position:absolute;right:-2%;top:-10%;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20vw;color:rgba(16,14,12,0.03);
+  pointer-events:none;user-select:none;
+  line-height:1;white-space:nowrap;
+}
+.hero-label{
+  font-family:'DM Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.25rem;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.hero-label::before{content:'✦';color:var(--mauve-l);font-size:0.45rem;}
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.5rem,8vw,7rem);
+  letter-spacing:0.03em;line-height:0.9;
+  margin-bottom:1rem;
+}
+.hero h1 .red{color:var(--red);}
+.hero h1 .it{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:300;color:var(--mauve);
+  font-size:0.85em;
+}
+.hero-desc{
+  font-size:1rem;color:var(--muted);line-height:1.8;
+  max-width:520px;margin-bottom:2rem;
+}
+.hero-note{
+  display:inline-flex;align-items:center;gap:0.75rem;
+  font-family:'DM Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);
+  padding:0.65rem 1.25rem;border:1.5px solid var(--border2);
+}
+.hero-note strong{color:var(--ink);}
+
+/* SECTION WRAPPER */
+.section{padding:4rem 2.5rem;border-bottom:1.5px solid var(--border2);}
+.section-label{
+  font-family:'DM Mono',monospace;font-size:0.6rem;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:2.5rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.section-label::before{content:'✦';color:var(--mauve-l);font-size:0.42rem;}
+.section-label::after{content:'';flex:1;height:1.5px;background:var(--border2);}
+.section-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2rem,4vw,3.2rem);
+  letter-spacing:0.03em;line-height:0.95;
+  margin-bottom:2.5rem;
+}
+.section-h em{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:300;color:var(--red);font-size:0.9em;
+}
+
+/* ── HOURLY BAND ── */
+.hourly-band{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:2rem 2.5rem;
+  background:var(--ink);
+  flex-wrap:wrap;gap:1.5rem;
+}
+.hourly-left{display:flex;align-items:baseline;gap:1rem;}
+.hourly-rate{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,6vw,5rem);
+  color:var(--paper);letter-spacing:0.03em;line-height:1;
+}
+.hourly-rate .slash{color:var(--red);}
+.hourly-rate .hr{font-size:0.45em;color:rgba(245,240,232,0.5);font-family:'DM Mono',monospace;letter-spacing:0.1em;}
+.hourly-desc{
+  display:flex;flex-direction:column;gap:0.3rem;
+}
+.hourly-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.3rem;letter-spacing:0.06em;color:var(--paper);
+}
+.hourly-sub{
+  font-family:'DM Mono',monospace;font-size:0.6rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(245,240,232,0.45);
+}
+.hourly-includes{
+  display:flex;flex-direction:column;gap:0.4rem;
+}
+.hourly-includes span{
+  font-size:0.8rem;color:rgba(245,240,232,0.6);
+  padding-left:1rem;position:relative;
+}
+.hourly-includes span::before{content:'→';position:absolute;left:0;color:var(--red);font-size:0.7rem;}
+.hourly-btn{
+  display:inline-block;padding:0.75rem 1.75rem;
+  background:var(--red);color:#fff;
+  border:2px solid var(--red);
+  box-shadow:4px 4px 0 rgba(245,240,232,0.2);
+  font-family:'Bebas Neue',sans-serif;font-size:1rem;
+  letter-spacing:0.1em;text-decoration:none;
+  transition:all 0.15s;white-space:nowrap;
+}
+.hourly-btn:hover{background:var(--red-l);}
+
+/* ── PACKAGES ── */
+.packages-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  background:var(--border2);
+  border:1.5px solid var(--border3);
+  box-shadow:8px 8px 0 var(--border2);
+}
+.pkg-card{
+  background:var(--paper);
+  padding:2.25rem 2rem;
+  display:flex;flex-direction:column;
+  transition:background 0.2s;
+  position:relative;
+}
+.pkg-card:hover{background:#fff;}
+.pkg-card.featured{background:var(--ink);}
+.pkg-card.featured:hover{background:#1a1714;}
+
+.pkg-badge{
+  display:inline-block;
+  font-family:'DM Mono',monospace;font-size:0.55rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  padding:0.25rem 0.65rem;
+  margin-bottom:1.25rem;width:fit-content;
+}
+.pkg-badge.b-default{border:1.5px solid var(--border3);color:var(--muted);}
+.pkg-badge.b-featured{background:var(--red);color:#fff;border:1.5px solid var(--red);}
+.pkg-badge.b-mauve{border:1.5px solid var(--mauve);color:var(--mauve);}
+
+.pkg-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.8rem;letter-spacing:0.04em;
+  color:var(--ink);margin-bottom:0.25rem;
+}
+.pkg-card.featured .pkg-name{color:var(--paper);}
+
+.pkg-price-row{
+  display:flex;align-items:baseline;gap:0.4rem;
+  margin-bottom:0.5rem;
+}
+.pkg-price{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3rem;line-height:1;
+  color:var(--red);letter-spacing:0.02em;
+}
+.pkg-card.featured .pkg-price{color:var(--paper);}
+.pkg-price-detail{
+  font-family:'DM Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);
+}
+.pkg-card.featured .pkg-price-detail{color:rgba(245,240,232,0.45);}
+
+.pkg-hours{
+  font-family:'DM Mono',monospace;font-size:0.65rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--mauve);margin-bottom:1.5rem;
+}
+.pkg-card.featured .pkg-hours{color:var(--mauve-l);}
+
+.pkg-divider{height:1.5px;background:var(--border2);margin-bottom:1.5rem;}
+.pkg-card.featured .pkg-divider{background:rgba(245,240,232,0.1);}
+
+.pkg-includes-label{
+  font-family:'DM Mono',monospace;font-size:0.55rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:0.75rem;
+}
+.pkg-card.featured .pkg-includes-label{color:rgba(245,240,232,0.4);}
+
+.pkg-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;flex:1;margin-bottom:2rem;}
+.pkg-list li{
+  font-size:0.83rem;color:#3a3330;
+  padding-left:1.15rem;position:relative;line-height:1.6;
+}
+.pkg-list li::before{content:'✦';position:absolute;left:0;color:var(--mauve-l);font-size:0.42rem;top:0.3rem;}
+.pkg-card.featured .pkg-list li{color:rgba(245,240,232,0.75);}
+.pkg-card.featured .pkg-list li::before{color:var(--mauve-l);}
+
+.pkg-cta{
+  display:block;text-align:center;
+  padding:0.7rem 1.5rem;
+  font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.1em;
+  text-decoration:none;transition:all 0.15s;
+  border:2px solid var(--ink);color:var(--ink);
+  box-shadow:3px 3px 0 var(--border3);
+}
+.pkg-cta:hover{box-shadow:5px 5px 0 var(--ink);transform:translate(-1px,-1px);}
+.pkg-cta.cta-red{background:var(--red);border-color:var(--red);color:#fff;box-shadow:3px 3px 0 rgba(245,240,232,0.3);}
+.pkg-cta.cta-red:hover{box-shadow:5px 5px 0 rgba(245,240,232,0.4);}
+
+/* ── SERVICES À LA CARTE ── */
+.srv-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  background:var(--border2);
+  border:1.5px solid var(--border2);
+}
+.srv-card{
+  background:var(--paper2);
+  padding:2rem;
+  transition:background 0.2s;
+}
+.srv-card:hover{background:#fff;}
+.srv-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.5rem;color:rgba(16,14,12,0.08);
+  line-height:1;margin-bottom:0.75rem;
+}
+.srv-icon{font-size:1.4rem;margin-bottom:0.75rem;display:block;}
+.srv-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.1rem;letter-spacing:0.04em;
+  color:var(--ink);margin-bottom:0.5rem;line-height:1.15;
+}
+.srv-desc{font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;}
+.srv-items{list-style:none;display:flex;flex-direction:column;gap:0.3rem;margin-bottom:1rem;}
+.srv-items li{
+  font-size:0.77rem;color:#4a4440;
+  padding-left:1rem;position:relative;
+}
+.srv-items li::before{content:'→';position:absolute;left:0;color:var(--red);font-size:0.68rem;}
+.srv-rate{
+  font-family:'DM Mono',monospace;font-size:0.58rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.22rem 0.6rem;
+  border:1.5px solid var(--border2);color:var(--muted);
+  display:inline-block;
+}
+
+/* ── PROCESS ── */
+.process-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2px;background:var(--border2);
+  border:1.5px solid var(--border2);
+}
+.process-step{
+  background:var(--paper);padding:2rem 1.75rem;
+  position:relative;
+}
+.step-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:4rem;color:rgba(16,14,12,0.06);
+  line-height:1;position:absolute;top:1rem;right:1.25rem;
+}
+.step-icon{font-size:1.5rem;margin-bottom:0.75rem;display:block;}
+.step-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.05rem;letter-spacing:0.04em;
+  color:var(--ink);margin-bottom:0.5rem;
+}
+.step-desc{font-size:0.8rem;color:var(--muted);line-height:1.7;}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;}
+.faq-item{
+  border-bottom:1.5px solid var(--border2);
+  cursor:pointer;
+}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.25rem 0;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.05rem;letter-spacing:0.03em;color:var(--ink);
+  user-select:none;
+}
+.faq-q .arrow{
+  font-size:0.9rem;color:var(--red);
+  transition:transform 0.25s;
+  flex-shrink:0;
+}
+.faq-item.open .arrow{transform:rotate(90deg);}
+.faq-a{
+  font-size:0.85rem;color:var(--muted);line-height:1.8;
+  max-height:0;overflow:hidden;
+  transition:max-height 0.3s ease,padding 0.3s;
+  padding:0;
+}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:1.25rem;}
+
+/* ── CTA FOOTER ── */
+.cta-footer{
+  padding:4rem 2.5rem;
+  display:grid;grid-template-columns:1fr auto;
+  gap:2rem;align-items:center;
+  background:var(--paper3);
+  border-top:1.5px solid var(--border3);
+}
+.cta-footer-left h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2rem,4vw,3.5rem);
+  letter-spacing:0.03em;line-height:0.95;margin-bottom:0.75rem;
+}
+.cta-footer-left h2 em{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:300;color:var(--red);font-size:0.9em;
+}
+.cta-footer-left p{font-size:0.9rem;color:var(--muted);max-width:400px;line-height:1.7;}
+.cta-buttons{display:flex;flex-direction:column;gap:0.6rem;align-items:flex-end;}
+.btn-big{
+  display:inline-block;padding:0.85rem 2rem;
+  font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;
+  text-decoration:none;transition:all 0.15s;
+}
+.btn-big.fill{background:var(--red);color:#fff;border:2px solid var(--red);box-shadow:4px 4px 0 var(--ink);}
+.btn-big.fill:hover{box-shadow:6px 6px 0 var(--ink);transform:translate(-1px,-1px);}
+.btn-big.outline{background:transparent;color:var(--ink);border:2px solid var(--ink);box-shadow:4px 4px 0 rgba(16,14,12,0.2);}
+.btn-big.outline:hover{box-shadow:5px 5px 0 var(--ink);transform:translate(-1px,-1px);}
+
+/* FOOTER */
+footer{
+  padding:1.25rem 2.5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1.5px solid var(--border2);
+}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:0.85rem;letter-spacing:0.12em;color:var(--muted);}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-link{
+  font-family:'DM Mono',monospace;font-size:0.58rem;
+  letter-spacing:0.08em;text-transform:lowercase;
+  color:var(--muted);text-decoration:none;
+  border-bottom:1px solid var(--border2);padding-bottom:1px;
+  transition:color 0.15s;
+}
+.footer-link:hover{color:var(--red);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .packages-grid{grid-template-columns:1fr;}
+  .srv-grid{grid-template-columns:1fr 1fr;}
+  .process-row{grid-template-columns:1fr 1fr;}
+  .cta-footer{grid-template-columns:1fr;}
+  .cta-buttons{align-items:flex-start;}
+  .hourly-band{flex-direction:column;align-items:flex-start;}
+  nav{padding:0.9rem 1.25rem;}
+  .section{padding:3rem 1.25rem;}
+  .hero{padding:3.5rem 1.25rem 3rem;}
+}
+@media(max-width:600px){
+  .srv-grid{grid-template-columns:1fr;}
+  .process-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">ALINE&nbsp;<span class="r">BAT</span><span class="m">ISTA</span></a>
+  <div class="nav-right">
+    <a href="aline-portfolio-v5.html" class="nav-back">← portfolio</a>
+    <a href="#contact" class="nav-cta">book a call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-text">SERVICES</div>
+  <p class="hero-label">Menu de Serviços &amp; Pacotes</p>
+  <h1>
+    <span class="red">SERVICES</span><br>
+    &amp; <span class="it">packages.</span>
+  </h1>
+  <p class="hero-desc">
+    Choose how you'd like to work together — hourly for one-off tasks,
+    a monthly package for ongoing support, or individual services à la carte.
+    All engagements are bilingual (EN/PT) and fully remote.
+  </p>
+  <div class="hero-note">
+    <span>✦</span>
+    <span>All packages include: <strong>onboarding call · weekly check-in · async comms via email or Slack</strong></span>
+  </div>
+</div>
+
+<!-- HOURLY ON-DEMAND -->
+<div class="hourly-band">
+  <div class="hourly-left">
+    <div class="hourly-rate">$15<span class="slash">/</span><span class="hr">hr</span></div>
+    <div class="hourly-desc">
+      <div class="hourly-title">On-Demand Hourly</div>
+      <div class="hourly-sub">No monthly commitment · Pay as you go</div>
+    </div>
+  </div>
+  <div class="hourly-includes">
+    <span>Perfect for one-off tasks or testing the fit</span>
+    <span>Minimum 2 hours per request</span>
+    <span>Invoiced weekly · Turnaround within 48h</span>
+  </div>
+  <a href="mailto:assist.alinebatista@gmail.com" class="hourly-btn">★ GET STARTED</a>
+</div>
+
+<!-- PACKAGES -->
+<div class="section">
+  <p class="section-label">Monthly Retainers</p>
+  <h2 class="section-h">CHOOSE YOUR<br><em>package.</em></h2>
+
+  <div class="packages-grid">
+
+    <!-- STARTER -->
+    <div class="pkg-card">
+      <span class="pkg-badge b-default">Starter</span>
+      <div class="pkg-name">ESSENTIALS</div>
+      <div class="pkg-price-row">
+        <div class="pkg-price">$225</div>
+        <div class="pkg-price-detail">/month</div>
+      </div>
+      <div class="pkg-hours">✦ 15 hours · at $15/hr</div>
+      <div class="pkg-divider"></div>
+      <div class="pkg-includes-label">What's included</div>
+      <ul class="pkg-list">
+        <li>Inbox &amp; calendar management</li>
+        <li>Basic scheduling &amp; coordination</li>
+        <li>Data entry &amp; research tasks</li>
+        <li>Email responses &amp; drafts</li>
+        <li>Bilingual support (EN/PT)</li>
+        <li>Weekly progress summary</li>
+      </ul>
+      <a href="mailto:assist.alinebatista@gmail.com?subject=Essentials Package" class="pkg-cta">GET STARTED →</a>
+    </div>
+
+    <!-- FEATURED: OPERATIONS -->
+    <div class="pkg-card featured">
+      <span class="pkg-badge b-featured">★ Most Popular</span>
+      <div class="pkg-name">OPERATIONS</div>
+      <div class="pkg-price-row">
+        <div class="pkg-price">$400</div>
+        <div class="pkg-price-detail">/month</div>
+      </div>
+      <div class="pkg-hours">✦ 25 hours · at $16/hr</div>
+      <div class="pkg-divider"></div>
+      <div class="pkg-includes-label">What's included</div>
+      <ul class="pkg-list">
+        <li>Everything in Essentials</li>
+        <li>Workflow &amp; systems setup</li>
+        <li>Spreadsheet dashboards &amp; reporting</li>
+        <li>Vendor &amp; client coordination</li>
+        <li>Light website updates</li>
+        <li>Booking platform management</li>
+        <li>Bi-weekly strategy check-in call</li>
+      </ul>
+      <a href="mailto:assist.alinebatista@gmail.com?subject=Operations Package" class="pkg-cta cta-red">GET STARTED →</a>
+    </div>
+
+    <!-- PARTNER -->
+    <div class="pkg-card">
+      <span class="pkg-badge b-mauve">Full Support</span>
+      <div class="pkg-name">PARTNER</div>
+      <div class="pkg-price-row">
+        <div class="pkg-price">$595</div>
+        <div class="pkg-price-detail">/month</div>
+      </div>
+      <div class="pkg-hours">✦ 35 hours · at $17/hr</div>
+      <div class="pkg-divider"></div>
+      <div class="pkg-includes-label">What's included</div>
+      <ul class="pkg-list">
+        <li>Everything in Operations</li>
+        <li>Full business ops management</li>
+        <li>SOPs &amp; process documentation</li>
+        <li>Email marketing assistance</li>
+        <li>Translation &amp; bilingual content</li>
+        <li>Priority response (same-day)</li>
+        <li>Weekly video check-in call</li>
+      </ul>
+      <a href="mailto:assist.alinebatista@gmail.com?subject=Partner Package" class="pkg-cta">GET STARTED →</a>
+    </div>
+
+  </div>
+
+  <p style="margin-top:1.5rem;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-align:center;">
+    Need more hours? Custom packages available — <a href="mailto:assist.alinebatista@gmail.com" style="color:var(--red);text-decoration:none;border-bottom:1px solid currentColor;">let's talk.</a>
+  </p>
+</div>
+
+<!-- À LA CARTE SERVICES -->
+<div class="section" style="background:var(--paper2);">
+  <p class="section-label">Individual Services</p>
+  <h2 class="section-h">À LA CARTE<br><em>services.</em></h2>
+  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:2rem;max-width:500px;line-height:1.75;">
+    Need just one thing done? Pick a specific service and I'll handle it at the hourly rate.
+    Minimum 2 hours per service.
+  </p>
+
+  <div class="srv-grid">
+
+    <div class="srv-card">
+      <div class="srv-num">01</div>
+      <span class="srv-icon">📋</span>
+      <div class="srv-name">Virtual &amp; Admin Support</div>
+      <p class="srv-desc">Day-to-day operations, inbox management, scheduling, and client communications.</p>
+      <ul class="srv-items">
+        <li>Inbox &amp; calendar management</li>
+        <li>Appointment scheduling</li>
+        <li>Client follow-ups &amp; comms</li>
+        <li>Document organization</li>
+        <li>Travel coordination</li>
+      </ul>
+      <span class="srv-rate">from $15/hr</span>
+    </div>
+
+    <div class="srv-card">
+      <div class="srv-num">02</div>
+      <span class="srv-icon">⚙</span>
+      <div class="srv-name">Operations &amp; Systems</div>
+      <p class="srv-desc">Workflow design, SOPs, process documentation, and tool setup for your business.</p>
+      <ul class="srv-items">
+        <li>SOP creation &amp; documentation</li>
+        <li>Workflow mapping &amp; design</li>
+        <li>Notion / ClickUp setup</li>
+        <li>Process automation research</li>
+        <li>Onboarding flows</li>
+      </ul>
+      <span class="srv-rate">from $15/hr</span>
+    </div>
+
+    <div class="srv-card">
+      <div class="srv-num">03</div>
+      <span class="srv-icon">💻</span>
+      <div class="srv-name">Tech &amp; Digital Systems</div>
+      <p class="srv-desc">Website edits, booking platform management, and digital infrastructure support.</p>
+      <ul class="srv-items">
+        <li>Website updates (Wix, Squarespace)</li>
+        <li>Mindbody / Mangomint management</li>
+        <li>Google Business profile</li>
+        <li>App integrations &amp; setup</li>
+        <li>Tech troubleshooting</li>
+      </ul>
+      <span class="srv-rate">from $15/hr</span>
+    </div>
+
+    <div class="srv-card">
+      <div class="srv-num">04</div>
+      <span class="srv-icon">📱</span>
+      <div class="srv-name">Social Media Assistance</div>
+      <p class="srv-desc">Execution support for your social — I handle the tasks, you keep the strategy. No content creation responsibility, just reliable follow-through.</p>
+      <ul class="srv-items">
+        <li>Content calendar management</li>
+        <li>Post scheduling (Meta, etc.)</li>
+        <li>Community inbox management</li>
+        <li>Canva graphic creation</li>
+        <li>Hashtag &amp; caption support</li>
+      </ul>
+      <span class="srv-rate">from $15/hr</span>
+    </div>
+
+    <div class="srv-card">
+      <div class="srv-num">05</div>
+      <span class="srv-icon">📊</span>
+      <div class="srv-name">Data &amp; Reporting</div>
+      <p class="srv-desc">Custom dashboards, spreadsheets, and reporting systems that make your data readable.</p>
+      <ul class="srv-items">
+        <li>Google Sheets dashboards</li>
+        <li>Excel advanced formulas</li>
+        <li>KPI tracking setup</li>
+        <li>Data entry &amp; cleanup</li>
+        <li>Monthly reports</li>
+      </ul>
+      <span class="srv-rate">from $15/hr</span>
+    </div>
+
+    <div class="srv-card">
+      <div class="srv-num">06</div>
+      <span class="srv-icon">🌎</span>
+      <div class="srv-name">Bilingual Support &amp; Translation</div>
+      <p class="srv-desc">Native Portuguese, fluent English. Translation, bilingual communications and content.</p>
+      <ul class="srv-items">
+        <li>Document translation (EN↔PT)</li>
+        <li>Bilingual client communication</li>
+        <li>Website content translation</li>
+        <li>Email copy in both languages</li>
+        <li>Proofreading &amp; editing</li>
+      </ul>
+      <span class="srv-rate">from $15/hr</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section">
+  <p class="section-label">Process</p>
+  <h2 class="section-h">HOW IT<br><em>works.</em></h2>
+  <div class="process-row">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <span class="step-icon">☎</span>
+      <div class="step-title">Discovery Call</div>
+      <p class="step-desc">Free 30-minute call to understand your business, needs, and what support would actually help you.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <span class="step-icon">📝</span>
+      <div class="step-title">Proposal &amp; Agreement</div>
+      <p class="step-desc">I send a simple proposal with scope, hours, and pricing. Once approved, we sign a short service agreement.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <span class="step-icon">🚀</span>
+      <div class="step-title">Onboarding</div>
+      <p class="step-desc">I set up our workflow — shared tools, communication channel, and access to what I need. Usually takes one day.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <span class="step-icon">✦</span>
+      <div class="step-title">Ongoing Support</div>
+      <p class="step-desc">I handle your tasks, send weekly updates, and check in regularly. You focus on growing your business.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section" style="background:var(--paper2);">
+  <p class="section-label">FAQ</p>
+  <h2 class="section-h">COMMON<br><em>questions.</em></h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Can I change my package after starting? <span class="arrow">→</span>
+      </div>
+      <div class="faq-a">Yes — packages can be upgraded, downgraded, or paused with 7 days notice at the end of each billing cycle. No long-term commitments required.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What if I need more hours in a month? <span class="arrow">→</span>
+      </div>
+      <div class="faq-a">Extra hours beyond your package are billed at your package rate. I'll always flag when we're approaching the limit so there are no surprises.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What tools and platforms do you use to communicate? <span class="arrow">→</span>
+      </div>
+      <div class="faq-a">I adapt to whatever works for you — email, Slack, WhatsApp, Notion, Trello, Asana. During onboarding we agree on one main channel so nothing gets lost.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Do you work with clients in Brazil or other countries? <span class="arrow">→</span>
+      </div>
+      <div class="faq-a">Yes. I work 100% remotely and am fully bilingual in English and Portuguese. I've worked across time zones and can adapt my hours for different markets.</div>
+    </div>
+    <div class="faq-item" style="border-bottom:none">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How do payments work? <span class="arrow">→</span>
+      </div>
+      <div class="faq-a">Monthly packages are invoiced at the start of each cycle. On-demand hourly work is invoiced weekly. I accept Venmo, Zelle, PayPal, or bank transfer.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FOOTER -->
+<div class="cta-footer" id="contact">
+  <div class="cta-footer-left">
+    <h2>READY TO<br><em>get started?</em></h2>
+    <p>Book a free 30-minute discovery call and let's figure out exactly what your business needs. No pressure, no commitment.</p>
+  </div>
+  <div class="cta-buttons">
+    <a href="YOUR_CALENDLY_LINK" target="_blank" class="btn-big fill">✦ BOOK A FREE CALL</a>
+    <a href="mailto:assist.alinebatista@gmail.com" class="btn-big outline">✉ SEND AN EMAIL</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">ALINE BATISTA · VIRTUAL BUSINESS MANAGER</span>
+  <div class="footer-links">
+    <a href="YOUR_LINKEDIN_URL" target="_blank" class="footer-link">LinkedIn</a>
+    <a href="YOUR_UPWORK_URL" target="_blank" class="footer-link">Upwork</a>
+    <a href="mailto:assist.alinebatista@gmail.com" class="footer-link">Email</a>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(el){
+  const item=el.parentElement;
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>
